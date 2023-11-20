@@ -1,0 +1,41 @@
+{
+  "name": "electron-quick-start",
+  "version": "1.0.0",
+  "description": "A minimal Electron application",
+  "main": "src/main/main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "node script/build",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "repository": "https://github.com/electron/electron-quick-start",
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
+  "author": "xnz <xianengzhi@yixin.im>",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "22.0.0",
+    "electron-builder": "23.6.0"
+  },
+  "build": {
+    "appId": "xnz",
+    "linux": {
+      "target": {
+        "target": "deb",
+        "arch": ["arm64"]
+      },
+      "category": "office",
+      "executableArgs": ["--no-sandbox"]
+
+    },
+    "deb":{}
+  }
+  
+}
