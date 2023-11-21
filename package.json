@@ -1,5 +1,5 @@
 {
-  "name": "electron-quick-start",
+  "name": "electron-example",
   "version": "1.0.0",
   "description": "A minimal Electron application",
   "main": "src/main/main.js",
@@ -31,9 +31,8 @@
         "target": "deb",
         "arch": ["arm64"]
       },
-      "category": "office",
+      "category": "Office;System;",
       "executableArgs": ["--no-sandbox"]
-
     },
     "deb":{}
   }

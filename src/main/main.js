@@ -1,10 +1,12 @@
 // Modules to control application life and create native browser window
 const { app, BrowserWindow, Tray, Menu, nativeImage } = require('electron');
 const path = require('node:path');
-const APP_PATH = app.getAppPath()
-const MAIN_DIR = path.resolve(APP_PATH, 'src/main');
-const RENDER_DIR = path.resolve(APP_PATH, 'src/render');
-const COMMON_DIR = path.resolve(APP_PATH, 'src/common');
+require('./message')
+const {
+  MAIN_DIR,
+  RENDER_DIR,
+  COMMON_DIR,
+} = require('../common/util')
 
 function createWindow() {
   // Create the browser window.
@@ -12,6 +14,7 @@ function createWindow() {
     width: 800,
     height: 600,
     webPreferences: {
+      webSecurity: false,
       preload: path.join(MAIN_DIR, 'preload.js'),
     },
   });
@@ -36,23 +39,6 @@ app.whenReady().then(() => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
   });
 
-  const icon = nativeImage.createFromPath(
-    path.join(COMMON_DIR, 'images/36x36.png')
-  );
-  tray = new Tray(icon);
-
-  // 注意: 你的 contextMenu, Tooltip 和 Title 代码需要写在这里!
-  const contextMenu = Menu.buildFromTemplate([
-    { label: 'Item1', type: 'radio' },
-    { label: 'Item2', type: 'radio' },
-    { label: 'Item3', type: 'radio', checked: true },
-    { label: 'Item4', type: 'radio' },
-  ]);
-
-  tray.setContextMenu(contextMenu);
-
-  tray.setToolTip('This is my application');
-  tray.setTitle('This is my title');
 });
 
 // Quit when all windows are closed, except on macOS. There, it's common

@@ -5,3 +5,13 @@
  * `contextIsolation` is turned on. Use the contextBridge API in `preload.js`
  * to expose Node.js functionality from the main process.
  */
+
+window.addEventListener('DOMContentLoaded', () => {
+  
+    const test = document.querySelector('#test')
+  
+    test.addEventListener('click', e => {
+      window._agent.call()
+    })
+  })
+  
